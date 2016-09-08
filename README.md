@@ -1,6 +1,6 @@
 # Dotfiles
 
-Personal collection of dotfiles, synced trough mackup (reason for the huge .gitignore file)
+Personal collection of dotfiles, synced trough [mackup](https://github.com/lra/mackup) (reason for the huge .gitignore file)
 
 # Installing
 1. `git clone https://github.com/thibmaek/dotfiles && cd dotfiles`
