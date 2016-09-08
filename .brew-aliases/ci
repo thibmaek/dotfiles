@@ -1,0 +1,3 @@
+#! /usr/local/bin/bash
+# alias: brew ci
+brew cask install $*

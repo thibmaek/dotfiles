@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+function install() {
+  rsync --exclude ".git/" \
+        --exclude ".DS_Store" \
+        --exclude ".gitignore" \
+        --exclude ".macos" \
+        --exclude "bin/" \
+        --exclude "README.md" \
+        -avh ../ ~;
+  source ~/.bash_profile;
+}
+
+install;
+unset install;

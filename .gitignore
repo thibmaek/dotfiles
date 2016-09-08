@@ -1,0 +1,17 @@
+.atom/
+.composer/
+.config/
+.gem/
+.heroku/
+.hyperterm_plugins/
+.nano/
+.spotify-ripper/
+.ssh/
+.subversion/
+Alfred.alfredpreferences
+Library/
+
+.netrc
+.npmrc
+
+.DS_Store

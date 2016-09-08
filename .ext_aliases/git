@@ -1,0 +1,33 @@
+# Committing
+alias ga="git add"
+alias gaa="git add ."
+alias gc="git commit -m"
+
+# Branching
+alias gbl="git branch -l"
+alias gco="git checkout"
+alias gmr="git merge"
+
+# Remotes
+alias gcl="git clone"
+alias gpl="git pull"
+alias gps="git push"
+alias gpt="git push --tags"
+alias gpf="git push --force"
+alias gro="git remote add origin"
+
+# Deployment
+alias gph="git push heroku master"
+alias gphd="git push heroku develop:master"
+alias ghr="heroku git:remote -a"
+alias gprm="git push resin master"
+
+# Controlling
+alias gd="git diff"
+alias glog="git log"
+alias gs="git status"
+
+# Squash Commits function
+function gsq() {
+  git rebase -i HEAD~$1
+}

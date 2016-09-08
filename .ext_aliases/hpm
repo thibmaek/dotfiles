@@ -1,0 +1,5 @@
+alias hpmi="hpm install"
+alias hpmu="hpm uninstall"
+alias hpmls="hpm ls"
+alias hpmlsr="hpm ls-remote"
+alias hyperconf="nano $HOME/.hyperterm.js"

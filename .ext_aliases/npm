@@ -1,0 +1,28 @@
+# Managing
+alias npmls="npm list -g --depth=0"
+alias npmog="npm outdated -g"
+alias npmcache="npm cache clean $(npm config get cache)"
+alias npmrm="npm cache clear && rm node_modules && npm install"
+
+# Install/Uninstall
+alias npmi="npm install"
+alias npmu="npm uninstall"
+alias npmig="npm install -g"
+alias npmug="npm uninstall -g"
+alias npmis="npm install --save"
+alias npmisd="npm install --save-dev"
+
+# Run tasks
+alias nrd="npm run development"
+alias nrp="npm run production"
+alias nrs="npm run serve"
+alias npms="npm start"
+
+# Check for outdated dependencies
+function npmo() {
+  if which npm-check >/dev/null; then
+    npm-check -u -E
+  else
+    npm outdated
+  fi
+}

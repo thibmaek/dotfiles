@@ -1,0 +1,3 @@
+#! /usr/local/bin/bash
+# alias: brew cz
+brew cask zap $*
