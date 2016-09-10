@@ -28,6 +28,3 @@ export PATH="$(brew --prefix homebrew/php/php55)/bin:$PATH"
 
 # Use brew sbin to path
 export PATH="/usr/local/sbin:$PATH"
-
-# Caskroom fix
-export HOMEBREW_CASK_OPTS="--caskroom=/usr/local/Caskroom"

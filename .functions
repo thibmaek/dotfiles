@@ -198,3 +198,7 @@ function superclean() {
   rm $HOME/.spotify-ripper/Storage
   rm /var/vm/sleepimage
 }
+
+function add_alias() {
+  echo "alias $1=\"$2\"" >> .aliases
+}
