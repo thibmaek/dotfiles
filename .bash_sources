@@ -1,0 +1,39 @@
+# UTILS
+
+# Nvm
+export NVM_DIR="/Users/thibaultmaekelbergh/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+# Rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+# Pyenv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
+# Alias-plugins
+for plugin in ~/.ext_aliases/*; do
+	[ -r "$plugin" ] && [ -f "$plugin" ] && source "$plugin"
+done
+unset plugin
+
+############################################################
+
+# COMPLETIONS
+
+# Nvm & npm
+[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
+source $NVM_DIR/versions/node/$(node -v)/lib/node_modules/npm/lib/utils/completion.sh
+
+# Git
+. ~/.git-completion.bash
+
+# Rbenv & bundler
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+if which bundler > /dev/null; then eval "$(complete_bundle_bash_command init)"; fi
+
+# Heroku
+source "$HOME/.heroku/plugins/heroku-bash-completion/heroku-completion.bash"
+
+# Use brew command-not-found
+if brew command command-not-found-init > /dev/null; then eval "$(brew command-not-found-init)"; fi
