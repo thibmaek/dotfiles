@@ -18,20 +18,17 @@ alias rel="reload"
 alias netest="ping www.google.be"
 alias kf="killall Finder"
 alias kd="killall Dock"
-alias al="$EDITOR ~/.aliases"
-alias fn="$EDITOR ~/.functions"
 alias c="ccat"
-alias cl="cleanup"
 alias purge="sudo purge"
 alias copy="pbcopy"
 alias mb="mackup backup"
-alias b="brew"
 
 # Applications
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 alias vlc="/Applications/VLC.app/Contents/MacOS/VLC"
 alias stubru="curl -o- https://raw.githubusercontent.com/thibmaek/radioscripts/master/stubru | bash"
 alias youtube-mp3="youtube-dl --extract-audio --audio-format mp3 --audio-quality 0"
+alias b="brew"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`

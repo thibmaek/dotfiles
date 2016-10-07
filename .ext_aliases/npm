@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Managing
 alias npmls="npm list -g --depth=0"
 alias npmog="npm outdated -g"
