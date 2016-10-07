@@ -1,10 +1,9 @@
 module.exports = {
   config: {
     fontSize: 15,
-    fontFamily: 'Hack, "Menlo", "Lucida Console", monospace',
-    cursorColor: 'rgba(248,28,229,0.75)',
-    // `BEAM` for |, `UNDERLINE` for _, `BLOCK` for █
-    cursorShape: 'BLOCK',
+    fontFamily: 'Hack, "Lucida Console", monospace',
+    cursorColor: 'rgba(248, 28, 229, .75)',
+    cursorShape: 'BLOCK', // `BEAM` for |, `UNDERLINE` for _, `BLOCK` for █
     foregroundColor: '#fff',
     backgroundColor: '#000',
     borderColor: '#333',
@@ -33,7 +32,7 @@ module.exports = {
       lightWhite: 'rgba(243, 243, 243, 1)'
     },
     shell: '/usr/local/bin/bash',
-    windowSize: [860,600]
+    windowSize: [860, 600]
   },
   plugins: [
     // @THEMES
