@@ -32,6 +32,15 @@ source $NVM_DIR/versions/node/$(node -v)/lib/node_modules/npm/lib/utils/completi
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 if which bundler > /dev/null; then eval "$(complete_bundle_bash_command init)"; fi
 
+# Pip
+_pip_completion()
+{
+    COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \
+                   COMP_CWORD=$COMP_CWORD \
+                   PIP_AUTO_COMPLETE=1 $1 ) )
+}
+complete -o default -F _pip_completion pip
+
 # Heroku
 source "$HOME/.heroku/plugins/heroku-bash-completion/heroku-completion.bash"
 
