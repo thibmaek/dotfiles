@@ -5,7 +5,7 @@ module.exports = {
     cursorColor: 'rgba(248, 28, 229, .75)',
     cursorShape: 'BLOCK', // `BEAM` for |, `UNDERLINE` for _, `BLOCK` for █
     foregroundColor: '#fff',
-    backgroundColor: '#000',
+    backgroundColor: 'rgba(0, 0, 0, .9)',
     borderColor: '#333',
     css: '',
     termCSS: `
@@ -32,26 +32,15 @@ module.exports = {
       lightWhite: 'rgba(243, 243, 243, 1)'
     },
     shell: '/usr/local/bin/bash',
-    windowSize: [860, 600]
   },
-  plugins: [
-    // @THEMES
-    //'hyperyellow',
-    //'hyperpanic',
-    //'hyperseti',
-    //'hyperterm-wwdc',
-    'hyperborder',
-    'hyperterm-bold-tab',
-    'hyperterm-tab-icons',
-    'hyper-dance-party',
-    // @PACKAGES
-    //'hyperterm-mactabs',
-    'hyperlinks',
-    'hyperterm-close-on-left',
-    'hypercwd',
-    'hyperterm-1password',
-    'hyperterm-paste',
-    'hyperterm-sync-settings',
-  ],
+  plugins: [// @THEMES
+  //'hyperyellow',
+  //'hyperpanic',
+  //'hyperseti',
+  //'hyperterm-wwdc',
+  'hyperborder', 'hyperterm-bold-tab', // @PACKAGES
+  'hyperterm-tab-icons', //'hyperterm-mactabs',
+  'hyper-dance-party', //'hyperterm-1password',
+  'hyperlinks', 'hyperterm-close-on-left', 'hypercwd', "hyper-log-actions"],
   localPlugins: []
 };
