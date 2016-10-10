@@ -128,7 +128,7 @@ function update() {
   npm update -g
   apm upgrade -c false
   brew update
-  brew upgrade --all
+  brew upgrade
   brew cleanup
   pip install --upgrade pip
   gem update
