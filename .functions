@@ -133,6 +133,7 @@ function update() {
   pip install --upgrade pip
   gem update
   gem update --system
+  gem cleanup
 }
 
 # Convert lossless to lossy
