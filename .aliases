@@ -91,5 +91,5 @@ alias reload="exec $SHELL -l"
 alias hey="terminal-notifier -title 'Task completed' -message 'A terminal task completed/failed'"
 
 # Generate a random password
-alias gen_pass="dd if=/dev/urandom bs=1 count=30 2>/dev/null | base64"
-alias gen_pass_ssl="openssl rand -base64 30"
+alias gen_pass="dd if=/dev/urandom bs=1 count=30 2>/dev/null | base64 | pbcopy"
+alias gen_pass_ssl="openssl rand -base64 30 | pbcopy"

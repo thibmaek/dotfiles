@@ -28,3 +28,6 @@ export PATH="$(brew --prefix homebrew/php/php55)/bin:$PATH"
 
 # Use brew sbin to path
 export PATH="/usr/local/sbin:$PATH"
+
+# Add yarn to the path
+export PATH="$HOME/.yarn/bin:$PATH"
