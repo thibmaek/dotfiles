@@ -125,7 +125,7 @@ function transfer() {
 # Quicker update for everything
 function update() {
   npm install npm -g
-  npm update -g
+  yarn self-update
   apm upgrade -c false
   brew update
   brew upgrade
