@@ -164,6 +164,7 @@
 [user]
 	name = Thibault Maekelbergh
 	email = thibault.maekelbergh@student.howest.be
+	signingkey = 623C634A90D5A40F
 [credential]
 	helper = osxkeychain
 [filter "hawser"]
