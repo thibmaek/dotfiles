@@ -181,8 +181,8 @@ function _update_nvm() {
 function sr() {
   spotify-ripper $1 && terminal-notifier \
      -title 'Task completed' -message 'A terminal task completed/failed' \
-     -group 'sr' -remove 'sr' -activate co.zeit.hyperterm \
-     -appIcon /Applications/HyperTerm.app/Contents/Resources/electron.icns
+     -group 'sr' -remove 'sr' -activate co.zeit.hyper \
+     -appIcon /Applications/Hyper.app/Contents/Resources/electron.icns
 }
 
 # cat/ccat than auto copy
