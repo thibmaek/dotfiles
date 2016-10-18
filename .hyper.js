@@ -2,7 +2,7 @@ module.exports = {
   config: {
     fontSize: 15,
     fontFamily: 'Hack, "Lucida Console", monospace',
-    cursorColor: 'rgba(248, 28, 229, .75)',
+    cursorColor: 'rgba(248, 28, 229, 1)',
     cursorShape: 'BLOCK', // `BEAM` for |, `UNDERLINE` for _, `BLOCK` for █
     foregroundColor: '#fff',
     backgroundColor: 'rgba(0, 0, 0, .9)',
@@ -33,14 +33,7 @@ module.exports = {
     },
     shell: '/usr/local/bin/bash',
   },
-  plugins: [// @THEMES
-  //'hyperyellow',
-  //'hyperpanic',
-  //'hyperseti',
-  //'hyperterm-wwdc',
-  'hyperborder', 'hyperterm-bold-tab', // @PACKAGES
-  'hyperterm-tab-icons', //'hyperterm-mactabs',
-  'hyper-dance-party', //'hyperterm-1password',
-  'hyperlinks', 'hyperterm-close-on-left', 'hypercwd', "hyper-log-actions"],
+  plugins: [
+  'hyperterm-bold-tab', 'hyperterm-tab-icons', 'hyperlinks', 'hyperterm-close-on-left', 'hypercwd', "hyper-log-actions", "hyperyellow"],
   localPlugins: []
 };
