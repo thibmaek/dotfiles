@@ -175,7 +175,7 @@ function nvmi_latest() {
 
 # Update to latest nvm
 function _update_nvm() {
-  wget -qO- https://raw.githubusercontent.com/creationix/nvm/$1/install.sh | bash
+  wget -qO- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 }
 
 function sr() {
@@ -201,5 +201,6 @@ function superclean() {
 }
 
 function add_alias() {
-  echo "alias $1=\"$2\"" >> .aliases
+  if [ -z "$1" ] && [ -z "$2" ]; then exit 1; fi;
+  echo "alias $1=\"$2\"" >> .aliases && rel
 }

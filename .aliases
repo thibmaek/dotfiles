@@ -40,8 +40,9 @@ else # macOS `ls`
 fi
 
 # `ls` aliases
-alias lsa="ls -a"
-alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
+alias lsa="ls -aF"
+alias lsd="ls -lF ${colorflag} | grep '^d'"
+alias lsad="ls -aF ${colorflag} | grep '$/'"
 alias l="ls -lF ${colorflag}"
 alias la="ls -laF ${colorflag}"
 
@@ -94,3 +95,4 @@ alias hey="terminal-notifier -title 'Task completed' -message 'A terminal task c
 # Generate a random password
 alias gen_pass="dd if=/dev/urandom bs=1 count=30 2>/dev/null | base64 | pbcopy"
 alias gen_pass_ssl="openssl rand -base64 30 | pbcopy"
+alias mo="mas outdated"
