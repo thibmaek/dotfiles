@@ -15,3 +15,11 @@ Library/
 .npmrc
 
 .DS_Store
+
+.now.json
+
+.yarnrc
+
+.greenkeeperrc
+
+.gnupg/*
