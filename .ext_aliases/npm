@@ -28,3 +28,9 @@ function npmo() {
     npm outdated
   fi
 }
+
+# Use local npm executables in the shell
+function npm-do {
+  (PATH=$(npm bin):$PATH;
+   eval $@;)
+}
