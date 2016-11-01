@@ -1,3 +1,6 @@
+# Use login shell bash
+shell -/usr/local/bin/bash
+
 # Disable the startup message
 startup_message off
 
