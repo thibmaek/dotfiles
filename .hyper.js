@@ -34,6 +34,14 @@ module.exports = {
     shell: '/usr/local/bin/bash',
   },
   plugins: [
-  'hyperterm-bold-tab', 'hyperterm-tab-icons', 'hyperlinks', 'hyperterm-close-on-left', 'hypercwd', "hyper-log-actions", "hyperyellow"],
+    'hyperterm-bold-tab',
+    'hyperterm-tab-icons',
+    'hyperlinks',
+    'hyperterm-close-on-left',
+    'hypercwd',
+    "hyper-log-actions",
+    "hyperyellow",
+    "hyperdevine"
+  ],
   localPlugins: []
 };
