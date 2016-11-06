@@ -4,11 +4,11 @@ alias sudo='sudo '
 # Navigational
 alias ..="cd .."
 alias ...="cd ../.."
-alias d="cd ~/Desktop"
-alias temp="cd ~/Desktop && mkd temp"
+alias d="cd $HOME/Desktop"
+alias temp="cd $HOME/Desktop && mkd temp"
 alias here="open ."
-alias devine="cd ~/Documents/Devine/"
-alias dev="cd ~/Documents/Development"
+alias devine="cd $HOME/ownCloud/Backups/School/Devine/Year\ 4"
+alias dev="cd $HOME/Documents/Development"
 
 # Shortcuts
 alias rmrf="/bin/rm -rf"

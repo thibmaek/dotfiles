@@ -124,16 +124,11 @@ function transfer() {
 
 # Quicker update for everything
 function update() {
-  npm install npm -g
-  yarn self-update
+  npm install -g npm yarn
   apm upgrade -c false
-  brew update
-  brew upgrade
-  brew cleanup
+  brew update && brew upgrade && brew cleanup
   pip install --upgrade pip
-  gem update
-  gem update --system
-  gem cleanup
+  gem update && gem update --system && gem cleanup
 }
 
 # Convert lossless to lossy
