@@ -40,8 +40,7 @@ module.exports = {
     'hypercwd',
     "hyper-log-actions",
     "hyperyellow",
-    "hyperdevine",
-    "hyper-tab-icons"
+    "hyperdevine"
   ],
   localPlugins: []
 };
