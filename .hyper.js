@@ -35,13 +35,13 @@ module.exports = {
   },
   plugins: [
     'hyperterm-bold-tab',
-    'hyperterm-tab-icons',
     'hyperlinks',
     'hyperterm-close-on-left',
     'hypercwd',
     "hyper-log-actions",
     "hyperyellow",
-    "hyperdevine"
+    "hyperdevine",
+    "hyper-tab-icons"
   ],
   localPlugins: []
 };
