@@ -1,7 +1,0 @@
-# Dotfiles
-alias alias-conf="nano $HOME/.aliases"
-alias profile-conf="nano $HOME/.bash_prompt"
-alias prompt-conf="nano $HOME/.bash_profile"
-
-# Hyper.app
-alias hyper-conf="nano $HOME/.hyper.js"
