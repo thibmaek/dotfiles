@@ -1,7 +1,7 @@
 module.exports = {
   config: {
     fontSize: 15,
-    fontFamily: 'Hack, "Lucida Console", monospace',
+    fontFamily: '"Roboto Mono for Powerline", "Lucida Console", monospace',
     cursorColor: 'rgba(248, 28, 229, 1)',
     cursorShape: 'BLOCK', // `BEAM` for |, `UNDERLINE` for _, `BLOCK` for █
     foregroundColor: '#fff',
