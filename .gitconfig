@@ -163,7 +163,7 @@
 	smudge = git media smudge %f
 [user]
 	name = Thibault Maekelbergh
-	email = thibault.maekelbergh@student.howest.be
+	email = thibault.maekelbergh@icloud.com
 	signingkey = 1510A2114D4A3CB4
 [credential]
 	helper = osxkeychain
