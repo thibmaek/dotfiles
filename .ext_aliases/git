@@ -29,5 +29,28 @@ alias gs="git status"
 
 # Squash Commits function
 function gsq() {
+  if [ -z $1 ]; then
+    echo "Please provide amount to squash"
+    return 1
+  fi
   git rebase -i HEAD~$1
+}
+
+# `cd` to the root of a Git project
+function gcd() {
+  TEMP_PWD=`pwd`
+  while ! [ -d .git ]; do
+    cd ..
+  done
+  OLDPWD=$TEMP_PWD
+}
+
+# Check out a PR from Github as a local branch
+function gpr() {
+  if [ -z $1 ]; then
+    echo "Pass in a PR id"
+    return 1
+  fi
+  git fetch origin pull/$1/head:pr/$1
+  git checkout pr/$1
 }
