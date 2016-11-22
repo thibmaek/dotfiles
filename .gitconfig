@@ -164,7 +164,7 @@
 [user]
 	name = Thibault Maekelbergh
 	email = thibault.maekelbergh@student.howest.be
-	signingkey = 623C634A90D5A40F
+	signingkey = 1510A2114D4A3CB4
 [credential]
 	helper = osxkeychain
 [filter "hawser"]
@@ -176,4 +176,4 @@
 	smudge = git lfs smudge %f
 	required = true
 [commit]
-	gpgsign = false
+	gpgsign = true
