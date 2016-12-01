@@ -27,7 +27,7 @@
 
   # Temporarily disable GPG signing for use of Github Desktop.app
   nogpg = config --global commit.gpgsign false
-  dogpg = config --global commit.gpgsign true
+  gpg = config --global commit.gpgsign true
 
 [apply]
 
