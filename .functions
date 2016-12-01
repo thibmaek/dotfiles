@@ -124,7 +124,9 @@ function transfer() {
 
 # Quicker update for everything
 function update() {
-  npm install -g npm yarn
+  for package in $(npm -g outdated --parseable --depth=0 | cut -d: -f2); do
+    npm install -g "$package"
+  done
   apm upgrade -c false
   brew update && brew upgrade && brew cleanup
   pip install --upgrade pip #&& pip list --outdated | cut -d' ' -f1 | xargs pip install --upgrade
