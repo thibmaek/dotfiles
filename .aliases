@@ -11,16 +11,12 @@ alias devine="cd $HOME/ownCloud/Backups/School/Devine/Year\ 4"
 alias dev="cd $HOME/Documents/Development"
 
 # Shortcuts
-alias rmrf="/bin/rm -rf"
-alias rmm="/bin/rm"
 alias rm="trash"
 alias rel="reload"
 alias netest="ping www.google.be"
 alias kf="killall Finder"
 alias kd="killall Dock"
-alias c="ccat"
 alias purge="sudo purge"
-alias copy="pbcopy"
 alias mb="mackup backup"
 
 # Applications
@@ -28,7 +24,12 @@ alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 alias vlc="/Applications/VLC.app/Contents/MacOS/VLC"
 alias stubru="curl -o- https://raw.githubusercontent.com/thibmaek/radioscripts/master/stubru | bash"
 alias youtube-mp3="youtube-dl --extract-audio --audio-format mp3 --audio-quality 0"
+alias g="git"
 alias b="brew"
+alias c="ccat"
+alias copy="pbcopy"
+alias rmrf="/bin/rm -rf"
+alias rmm="/bin/rm"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
