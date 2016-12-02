@@ -4,14 +4,22 @@
   a = add
   aa = add .
   c = commit
-  cm = commit -m
+  c-msg = commit -m
+  c-amend = commit --amend
+  c-no-verify = commit --no-verify
+
+  # Branching
+  co = checkout
+  b-del = branch -d
+  b-del-rem = push origin --delete
 
   # Remotes
   cl = clone
   pl = pull
   ps = push
-  pt = push --tags
-  pf = push --force
+  ps-no-verify = push --no-verify
+  ps-tags = push --tags
+  ps-force = push --force
   ro = remote add origin
 
   # Controlling
@@ -136,4 +144,4 @@
   smudge = git lfs smudge %f
   required = true
 [commit]
-	gpgsign = false
+	gpgsign = true
