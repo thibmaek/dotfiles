@@ -25,6 +25,7 @@
   # Controlling
   d = diff
   l = log
+  l-oneline = log --oneline
   s = status
   ss = status -s
 
