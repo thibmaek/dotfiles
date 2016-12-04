@@ -124,7 +124,7 @@ function transfer() {
 
 # Quicker update for everything
 function update() {
-  for package in $(npm -g outdated --parseable --depth=0 | cut -d: -f2); do
+  for package in $(npm -g outdated --parseable --depth=0 | cut -d: -f3); do
     npm install -g "$package"
   done
   apm upgrade -c false
@@ -176,6 +176,7 @@ function _update_nvm() {
 }
 
 function sr() {
+  cd $HOME
   spotify-ripper $1 && terminal-notifier \
      -title 'Task completed' -message 'A terminal task completed/failed' \
      -group 'sr' -remove 'sr' -activate co.zeit.hyper \
@@ -195,6 +196,7 @@ function _c() {
 function superclean() {
   rm $HOME/.spotify-ripper/Storage
   rm /var/vm/sleepimage
+  rm $(brew --cache) && brew cask cleanup
 }
 
 function add_alias() {
