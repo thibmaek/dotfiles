@@ -12,8 +12,8 @@
   co = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
   branch-rm = branch -d
   branch-mv = branch -m
-  branch-rm-remote = "!f() {git branch -d $1; git push origin --delete $1}; f"
-  branch-mv-rem = "!f() {git branch -m $1 $2; git push origin --delete $1; git push --set-upstream origin $2}; f"
+  branch-rm-remote = "!f() { git branch -d $1; git push origin --delete $1; }; f"
+  branch-mv-rem = "!f() { git branch -m $1 $2; git push origin --delete $1; git push --set-upstream origin $2: }; f"
 
   # Remotes
   cl = clone
@@ -22,8 +22,9 @@
   ps-no-verify = push --no-verify
   ps-tags = push --tags
   ps-force = push --force
-  ps-remote = push -u
+  ps-remote = push -u origin
   ro = remote add origin
+  f = fetch origin
 
   # Controlling
   d = diff
@@ -31,9 +32,6 @@
   l-oneline = log --oneline
   s = status
   ss = status -s
-
-  # Merging, rebasing, squashing
-  sq = "!r() {if [ -z $1 ]; then echo \"Please provide amount to squash\"; return 1; fi; git rebase -i HEAD~$1}; r"
 
   # Show verbose output about tags, branches or remotes
   tags = tag -l
@@ -43,12 +41,6 @@
   # Temporarily disable GPG signing for use of Github Desktop.app
   nogpg = config --global commit.gpgsign false
   gpg = config --global commit.gpgsign true
-
-  # `cd` to the root of a Git project
-  cd = "!f() {TEMP_PWD=`pwd`; while ! [ -d .git ]; do cd ..; done; OLDPWD=$TEMP_PWD;}; f"
-
-  # Check out a PR from Github as a local branch
-  pr = "!f() {if [ -z $1 ]; then echo \"Pass in a PR id\"; return 1; fi; git fetch origin pull/$1/head:pr/$1; git checkout pr/$1;}; f"
 
 [apply]
 
@@ -158,3 +150,5 @@
   required = true
 [commit]
 	gpgsign = true
+[gpg]
+	program = /usr/local/bin/gpg
