@@ -7,10 +7,17 @@ module.exports = {
     foregroundColor: '#fff',
     backgroundColor: 'rgba(0, 0, 0, 1)',
     borderColor: '#333',
-    css: '',
+    css: `
+      .term_fit:not(.term_term) {opacity: .6;}
+      .term_fit.term_active {
+        opacity: 1;
+        transition: opacity 0.12s ease-in-out;
+        will-change: opacity;
+      }
+    `,
     termCSS: `
-    x-screen a {color: rgba(252, 60, 131, 1);}
-    x-screen a.hover {text-decoration: underline;}
+      x-screen a {color: rgba(252, 60, 131, 1);}
+      x-screen a.hover {text-decoration: underline;}
     `,
     padding: '12px 14px',
     colors: {
