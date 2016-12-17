@@ -38,16 +38,17 @@ module.exports = {
       lightCyan: 'rgba(128, 235, 252, 1)',
       lightWhite: 'rgba(243, 243, 243, 1)'
     },
-    shell: '/usr/local/bin/bash',
+    shell: '/usr/local/bin/bash'
   },
   plugins: [
-    'hyperterm-bold-tab',
     'hyperlinks',
-    'hyperterm-close-on-left',
     'hypercwd',
-    "hyper-log-actions",
-    "hyperyellow",
-    "hyperdevine"
+    "hyper-statusline",
+    "hyperlayout",
+    "hyperterm-alternatescroll",
+    "hyper-tab-icons",
+    "hyper-simple-vibrancy",
+    "hyper-material"
   ],
   localPlugins: []
 };
