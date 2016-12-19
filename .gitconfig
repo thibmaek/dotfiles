@@ -7,6 +7,8 @@
   c-msg = commit -m
   c-amend = commit --amend
   c-no-verify = commit --no-verify
+  discard = checkout --
+  discard-all = checkout -- *
 
   # Branching
   co = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
