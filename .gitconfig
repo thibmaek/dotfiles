@@ -14,6 +14,7 @@
   co = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
   branch-rm = branch -d
   branch-mv = branch -m
+  branch-cleanup = remote update --prune
   branch-rm-remote = "!f() { git branch -d $1; git push origin --delete $1; }; f"
   branch-mv-rem = "!f() { git branch -m $1 $2; git push origin --delete $1; git push --set-upstream origin $2: }; f"
   branch-refresh = fetch origin --prune
@@ -33,12 +34,16 @@
   d = diff
   l = log
   l-oneline = log --oneline
+  l-search = log -S
   s = status
   ss = status -s
+  stats = shortlog -sn
+  today = diff --shortstat "@{0 day ago}"
 
   # Show verbose output about tags, branches or remotes
   tags = tag -l
   branches = branch -a
+  br = branch -a -v
   remotes = remote -v
 
   # Temporarily disable GPG signing for use of Github Desktop.app
