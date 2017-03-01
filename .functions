@@ -133,23 +133,6 @@ function update() {
   gem update && gem update --system && gem cleanup
 }
 
-# Convert lossless to lossy
-function _audio() {
-  case $1 in
-    --mp3|*) local CODEC=libmp3lame;local FILENAME=mp3;;
-    --aac) local CODEC=ffmpeg -c:a aac;local FILENAME=aac;;
-    --help) echo "Usage: _audio --codec --bitrate \n Default: _audio --mp3 --256" && exit 0;;
-  esac
-  case $2 in
-    256|*) local BITRATE=256k;;
-    320) local BITRATE=320k;;
-  esac
-
-  for FILE in *.flac; do
-    ffmpeg -i "$FILE" -c:a $CODEC -b:a $BITRATE "`basename "$FILE" .flac`.$FILENAME" || break;
-  done
-}
-
 # Given an argument installs new node version, also migrating packages
 function nvmi() {
   NOW=$(node -v)
