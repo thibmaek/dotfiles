@@ -8,7 +8,6 @@ alias d="cd $HOME/Desktop"
 alias dl="cd $HOME/Downloads"
 alias temp="cd $HOME/Desktop && mkd temp"
 alias here="open ."
-alias devine="cd $HOME/ownCloud/Backups/School/Devine/Year\ 4"
 alias dev="cd $HOME/Documents/Development"
 
 # Shortcuts
@@ -17,20 +16,17 @@ alias rel="reload"
 alias netest="ping www.google.be"
 alias kf="killall Finder"
 alias kd="killall Dock"
+alias rmrf="/bin/rm -rf"
 alias purge="sudo purge"
-alias mb="mackup backup"
+alias chmodx="chmod +x"
 
 # Applications
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 alias vlc="/Applications/VLC.app/Contents/MacOS/VLC"
 alias stubru="curl -o- https://raw.githubusercontent.com/thibmaek/radioscripts/master/stubru | bash"
 alias youtube-mp3="youtube-dl --extract-audio --audio-format mp3 --audio-quality 0"
-alias g="git"
-alias b="brew"
-alias c="ccat"
 alias copy="pbcopy"
-alias rmrf="/bin/rm -rf"
-alias rmm="/bin/rm"
+alias mb="mackup backup"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -44,6 +40,7 @@ fi
 # `ls` aliases
 alias lsa="ls -aF"
 alias lsd="ls -lF ${colorflag} | grep '^d'"
+alias 💊="lsd"
 alias lsad="ls -aF ${colorflag} | grep '$/'"
 alias l="ls -lF ${colorflag}"
 alias la="ls -laF ${colorflag}"
@@ -100,4 +97,3 @@ alias hey="terminal-notifier -title 'Task completed' -message 'A terminal task c
 # Generate a random password
 alias gen_pass="dd if=/dev/urandom bs=1 count=30 2>/dev/null | base64 | tr -d '\n' | pbcopy"
 alias gen_pass_ssl="openssl rand -base64 30 | tr -d '\n' | pbcopy"
-alias mo="mas outdated"
