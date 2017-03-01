@@ -9,6 +9,7 @@
   c-no-verify = commit --no-verify
   discard = checkout --
   discard-all = checkout -- *
+  unstage = reset HEAD
 
   # Branching
   co = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
