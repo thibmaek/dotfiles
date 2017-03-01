@@ -27,10 +27,14 @@ export EDITOR="vim";
 export GEMPATH='~/.rbenv/versions/$(rbenv --version-name)/bin'
 
 # Use brew php in CLI env
-export PATH="$(brew --prefix homebrew/php/php55)/bin:$PATH"
+#export PATH="$(brew --prefix homebrew/php/php55)/bin:$PATH"
+export PATH="$(brew --prefix homebrew/php/php71)/bin:$PATH"
 
 # Use brew sbin to path
 export PATH="/usr/local/sbin:$PATH"
 
 # Add yarn to the path
 export PATH="$HOME/.yarn/bin:$PATH"
+
+# Add `~/bin` to the `$PATH`
+export PATH="$HOME/bin:$PATH";
