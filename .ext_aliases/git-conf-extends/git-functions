@@ -1,0 +1,32 @@
+[alias]
+
+# Serve using local git daemon
+serve = daemon \
+        --reuseaddr \
+        --verbose \
+        --base-path=. \
+        --export-all \
+        ./.git;
+
+# Serve using local git daemon + tunnel with ngrok
+ngrok = "!f() { \
+          type jq >/dev/null 2>&1 || { echo >&2 \"This alias requires jq: https://stedolan.github.io/jq/\"; exit 1; }; \
+          NGROK_WAIT=${NGROK_WAIT:-5}; \
+          git serve & \
+          ngrok tcp 9418 > /dev/null 2>&1 & \
+          echo >&2 "Waiting $NGROK_WAIT seconds for git daemon and ngrok to start..."; \
+          sleep $NGROK_WAIT; \
+          public_url=$(curl -s http://localhost:4040/api/tunnels/command_line | jq -r '.public_url[3:]'); \
+          public_url="git$public_url/"; \
+          echo "Serving your repo at: $public_url"; \
+          read -rsp \"Press 't' to tear down server...\" -d $'t'; \
+          pkill -P $$; \
+       }; f"
+
+# Get a standup review
+standup = !git log \
+          --author=$USER \
+          --since='9am yesterday' \
+          --all \
+          --format=%s
+

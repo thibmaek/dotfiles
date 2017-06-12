@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Shorter squash
 function gsq() {
 	if [ -z $1 ]; then
