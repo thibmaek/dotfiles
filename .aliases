@@ -95,6 +95,9 @@ alias path='echo -e ${PATH//:/\\n}'
 # Notify when a terminal task completes
 alias hey="terminal-notifier -title 'Task completed' -message 'A terminal task completed/failed'"
 
+# Get file permissions in octal format
+alias octal="gstat -c \"%a %n\""
+
 # Generate a random password
 alias gen_pass="dd if=/dev/urandom bs=1 count=30 2>/dev/null | base64 | tr -d '\n' | pbcopy"
 alias gen_pass_ssl="openssl rand -base64 30 | tr -d '\n' | pbcopy"
