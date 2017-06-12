@@ -177,6 +177,7 @@ function _c() {
 
 # Clean temp files etc
 function superclean() {
+  rm $HOME/Library/Caches/Adobe/After\ Effects
   rm $HOME/.spotify-ripper/Storage
   rm /var/vm/sleepimage
   rm $(brew --cache) && brew cask cleanup
