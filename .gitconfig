@@ -1,5 +1,8 @@
 [alias]
 
+  # List aliases
+  aliases = config --get-regexp alias
+
   # Staging & commiting
   a = add
   aa = add .
@@ -13,12 +16,15 @@
 
   # Branching
   co = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+  ch = checkout
   branch-rm = branch -d
   branch-mv = branch -m
   branch-cleanup = remote update --prune
   branch-rm-remote = "!f() { git branch -d $1; git push origin --delete $1; }; f"
   branch-mv-rem = "!f() { git branch -m $1 $2; git push origin --delete $1; git push --set-upstream origin $2: }; f"
   branch-refresh = fetch origin --prune
+  which = !git branch | grep -i
+  lucky = !sh -c 'git checkout $(git which $1 -m1)' -
 
   # Remotes
   cl = clone
@@ -34,7 +40,7 @@
   # Controlling
   d = diff
   l = log
-  l-oneline = log --oneline
+  l-oneline = log --pretty=oneline --abbrev-commit --graph --decorate
   l-search = log -S
   s = status
   ss = status -s
@@ -139,25 +145,43 @@
 [url "git://gist.github.com/"]
 
   insteadOf = "gist:"
+
 [filter "media"]
+
   required = true
   clean = git media clean %f
   smudge = git media smudge %f
-[user]
-  name = Thibault Maekelbergh
-  email = thibault.maekelbergh@icloud.com
-  signingkey = 1510A2114D4A3CB4
-[credential]
-  helper = osxkeychain
+
 [filter "hawser"]
+
   clean = git hawser clean %f
   smudge = git hawser smudge %f
   required = true
+
 [filter "lfs"]
+
   clean = git lfs clean %f
   smudge = git lfs smudge %f
   required = true
+
+[user]
+
+  name = Thibault Maekelbergh
+  email = thibault.maekelbergh@icloud.com
+  signingkey = 1510A2114D4A3CB4
+
+[credential]
+
+  helper = osxkeychain
+
 [commit]
+
 	gpgsign = true
+
 [gpg]
-	program = /usr/local/bin/gpg
+
+	program = /usr/local/MacGPG2/bin/gpg2
+
+[include]
+
+	path = /Users/thibaultmaekelbergh/.ext_aliases/git-conf-extends/git-functions
