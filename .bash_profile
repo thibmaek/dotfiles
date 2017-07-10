@@ -37,3 +37,5 @@ complete -C "perl -e '@w=split(/ /,\$ENV{COMP_LINE},-1);\$w=pop(@w);for(qx(scree
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
+
+[[ -s "/Users/thibaultmaekelbergh/.gvm/scripts/gvm" ]] && source "/Users/thibaultmaekelbergh/.gvm/scripts/gvm"
