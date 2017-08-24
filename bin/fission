@@ -1,15 +1,26 @@
 #!/usr/bin/env bash
 
+INPUT_CODEC=
+OUTPUT_CODEC=
+
+if [ -z "$1" ]; then
+  echo "No codec provided. Exiting…"
+  echo "Usage: fission <input_codec> <output_codec>"
+  echo "e.g.: fission flac aac"
+  exit
+fi
+
 case $1 in
-  --mp3|*) local CODEC=libmp3lame;local FILENAME=mp3;;
-  --aac) local CODEC=ffmpeg -c:a aac;local FILENAME=aac;;
-  --help) echo "Usage: _audio --codec --bitrate \n Default: _audio --mp3 --256" && exit 0;;
-esac
-case $2 in
-  256|*) local BITRATE=256k;;
-  320) local BITRATE=320k;;
+  flac) INPUT_CODEC=flac;;
+  wav) INPUT_CODEC=wav;;
 esac
 
-for FILE in *.flac; do
-  ffmpeg -i "$FILE" -c:a $CODEC -b:a $BITRATE "`basename "$FILE" .flac`.$FILENAME" || break;
+case $2 in
+  mp3) OUTPUT_CODEC=libmp3lame; BITRATE=320k; FILENAME=mp3;;
+  aac) OUTPUT_CODEC=libfdk_aac; BITRATE=256k; FILENAME=m4a;;
+  help) echo "Usage: fission <input_codec> <output_codec>" && echo "e.g.: fission flac aac" && exit 0;;
+esac
+
+for FILE in *."$INPUT_CODEC"; do
+  ffmpeg -i "$FILE" -c:a $OUTPUT_CODEC -b:a "$BITRATE" "`basename "$FILE" ."$INPUT_CODEC"`.$FILENAME" || break;
 done
