@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Create a new directory and enter it
 function mkd() {
 	mkdir -p "$@" && cd "$@";
@@ -115,11 +117,11 @@ function tre() {
 
 # Transfer.sh (https://transfer.sh)
 function transfer() {
-    tmpfile=$( mktemp -t transferXXX )
-    basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9]/-/g')
-    curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile;
-    cat $tmpfile;
-    rm -f $tmpfile;
+  tmpfile=$( mktemp -t transferXXX )
+  basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9]/-/g')
+  curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile;
+  cat $tmpfile;
+  rm -f $tmpfile;
 }
 
 # Quicker update for everything
