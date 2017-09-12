@@ -23,3 +23,5 @@ Library/
 .greenkeeperrc
 
 .gnupg/*
+
+.vim/bundle/
