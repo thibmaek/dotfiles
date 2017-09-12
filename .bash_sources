@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # UTILS
 
 # Nvm
@@ -6,7 +8,7 @@ export NVM_DIR="/Users/thibaultmaekelbergh/.nvm"
 
 # Rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # Pyenv
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
@@ -22,7 +24,9 @@ unset plugin
 # COMPLETIONS
 
 # Brew bash completion
-[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+if [ -f /usr/local/share/bash-completion/bash_completion ]; then
+  . /usr/local/share/bash-completion/bash_completion
+fi
 
 # Nvm & npm
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
@@ -32,7 +36,6 @@ source $NVM_DIR/versions/node/$(node -v)/lib/node_modules/npm/lib/utils/completi
 . ~/.git-completion.bash
 
 # Rbenv & bundler
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 if which bundler > /dev/null; then eval "$(complete_bundle_bash_command init)"; fi
 
 # Pip

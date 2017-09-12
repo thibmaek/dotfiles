@@ -28,6 +28,7 @@ alias youtube-mp3="youtube-dl --extract-audio --audio-format mp3 --audio-quality
 alias copy="pbcopy"
 alias mb="mackup backup"
 alias fk="fkill"
+alias grep="grep --color=auto"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
