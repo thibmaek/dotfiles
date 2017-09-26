@@ -13,6 +13,9 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # Pyenv
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
+# gpg2 & its gpg-agent
+export PATH="/usr/local/opt/gpg-agent/bin:$PATH"
+
 # Alias-plugins
 for plugin in ~/.ext_aliases/*; do
 	[ -r "$plugin" ] && [ -f "$plugin" ] && source "$plugin"
@@ -27,10 +30,6 @@ unset plugin
 if [ -f /usr/local/share/bash-completion/bash_completion ]; then
   . /usr/local/share/bash-completion/bash_completion
 fi
-
-# Nvm & npm
-[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
-source $NVM_DIR/versions/node/$(node -v)/lib/node_modules/npm/lib/utils/completion.sh
 
 # Git
 . ~/.git-completion.bash

@@ -19,6 +19,9 @@ export MANPAGER="less -X";
 # Reference gitconfig
 export GITCONFIG="$HOME/.gitconfig"
 
+# Reference .ssh/config
+export SSH_CONFIG="$HOME/.ssh/config"
+
 # Set the atom home folder
 export ATOM_HOME="$HOME/.atom/"
 
@@ -33,9 +36,6 @@ export GEMPATH='~/.rbenv/versions/$(rbenv --version-name)/bin'
 
 # Use brew sbin to path
 export PATH="/usr/local/sbin:$PATH"
-
-# Add yarn to the path
-export PATH="$HOME/.yarn/bin:$PATH"
 
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH";

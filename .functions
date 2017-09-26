@@ -165,11 +165,6 @@ function nvmi_latest() {
   nvm uninstall $NOW
 }
 
-# Update to latest nvm
-function _update_nvm() {
-  wget -qO- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-}
-
 function sr() {
   cd $HOME
   spotify-ripper $1 && terminal-notifier \
