@@ -39,6 +39,7 @@
 
   # Controlling
   d = diff
+  filemerge = difftool -t opendiff -y
   l = log
   l-oneline = log --pretty=oneline --abbrev-commit --graph --decorate
   l-search = log -S
