@@ -26,8 +26,6 @@ alias vlc="/Applications/VLC.app/Contents/MacOS/VLC"
 alias stubru="curl -o- https://raw.githubusercontent.com/thibmaek/radioscripts/master/stubru | bash"
 alias youtube-mp3="youtube-dl --extract-audio --audio-format mp3 --audio-quality 0"
 alias copy="pbcopy"
-alias mb="mackup backup"
-alias fk="fkill"
 alias grep="grep --color=auto"
 
 # Detect which `ls` flavor is in use
@@ -42,7 +40,6 @@ fi
 # `ls` aliases
 alias lsa="ls -aF"
 alias lsd="ls -lF ${colorflag} | grep '^d'"
-alias 💊="lsd"
 alias lsad="ls -aF ${colorflag} | grep '$/'"
 alias l="ls -lF ${colorflag}"
 alias la="ls -laF ${colorflag}"
@@ -101,9 +98,16 @@ alias hey="terminal-notifier -title 'Task completed' -message 'A terminal task c
 alias octal="gstat -c \"%a %n\""
 
 # Generate a random password
-alias gen_pass="dd if=/dev/urandom bs=1 count=30 2>/dev/null | base64 | tr -d '\n' | pbcopy"
-alias gen_pass_ssl="openssl rand -base64 30 | tr -d '\n' | pbcopy"
+alias pass="dd if=/dev/urandom bs=1 count=30 2>/dev/null | base64 | cp_sanitized"
+alias pass_ssl="openssl rand -base64 30 | cp_sanitized"
 
+# HTTP Request aliases with lwp-request
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
   alias "${method}"="lwp-request -m '${method}'"
 done
+
+# Get a DD/MM/YY format date
+alias date_dd_mm_yy="date +%x"
+
+# Copy stdin and sanitize trailing newlines
+alias cp_sanitized="tr -d '\n' | pbcopy"
