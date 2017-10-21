@@ -20,7 +20,7 @@ export MANPAGER="less -X";
 export GITCONFIG="$HOME/.gitconfig"
 
 # Reference .ssh/config
-export SSH_CONFIG="$HOME/.ssh/config"
+export SSHCONFIG="$HOME/.ssh/config"
 
 # Set the atom home folder
 export ATOM_HOME="$HOME/.atom/"
