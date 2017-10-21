@@ -186,7 +186,6 @@ function _c() {
 function superclean() {
   rm $HOME/Library/Caches/Adobe/After\ Effects
   rm $HOME/.spotify-ripper/Storage
-  rm /var/vm/sleepimage
   rm $(brew --cache) && brew cask cleanup
 }
 
@@ -200,5 +199,5 @@ function p() {
 }
 
 function rnd_num() {
-  jot -r 1 $1 $2 | pbcopy
+  jot -r 1 $1 $2 | cp_sanitized
 }
