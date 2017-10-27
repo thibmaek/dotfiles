@@ -7,33 +7,28 @@
   a = add
   aa = add .
   c = commit
-  c-msg = commit -m
-  c-amend = commit --amend
-  c-no-verify = commit --no-verify
   discard = checkout --
   discard-all = checkout -- *
   unstage = reset HEAD
 
   # Branching
-  co = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+  co = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f" # checkout or create if non-existent
   ch = checkout
+  cu = "!f() { git checkout $1 && git pull; }; f" # checkout and fetch remote changes
   branch-rm = branch -d
   branch-mv = branch -m
   branch-cleanup = remote update --prune
   branch-rm-remote = "!f() { git branch -d $1; git push origin --delete $1; }; f"
   branch-mv-rem = "!f() { git branch -m $1 $2; git push origin --delete $1; git push --set-upstream origin $2: }; f"
   branch-refresh = fetch origin --prune
+  branch-prune-remote = fetch origin --prune
   branch-prune = branch-prune = "!f() { git branch-refresh | git branch -r | awk '{print $1}' | egrep -vf /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -d }; f"
   which = !git branch | grep -i
   lucky = !sh -c 'git checkout $(git which $1 -m1)' -
 
   # Remotes
-  cl = clone
   pl = pull
   ps = push
-  ps-no-verify = push --no-verify
-  ps-tags = push --tags
-  ps-force = push --force
   ps-remote = push -u origin
   ro = remote add origin
   f = fetch origin
@@ -42,8 +37,9 @@
   d = diff
   filemerge = difftool -t opendiff -y
   l = log
-  l-oneline = log --pretty=oneline --abbrev-commit --graph --decorate
-  l-search = log -S
+  log-short = log --pretty=oneline --abbrev-commit --graph --decorate
+  log-short-no-merges = log-short --no-merge --first-parent
+  log-search = log -S
   s = status
   ss = status -s
   stats = shortlog -sn
