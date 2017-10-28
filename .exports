@@ -46,3 +46,8 @@ export GPG_TTY=$(tty);
 
 # Use brew curl instead of macOS curl
 export PATH="/usr/local/opt/curl/bin:$PATH"
+
+# Export some aliased brew dirs for easier access
+export BREW_CELLAR="$(brew --cellar)"
+export BREW_HOME="$(brew --prefix)/Homebrew"
+export BREW_TAPS="$BREW_HOME/Library/Taps"

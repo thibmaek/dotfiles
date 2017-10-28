@@ -75,7 +75,10 @@ module.exports = {
     "hyperterm-alternatescroll",
     "hyper-tab-icons",
     "hyper-simple-vibrancy",
-    "hyper-material"
+    "hyper-material",
+    "hyper-search",
+    "hyper-quit",
+    "hyper-confirm"
   ],
   localPlugins: []
 };
