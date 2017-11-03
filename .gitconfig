@@ -10,6 +10,8 @@
   discard = checkout --
   discard-all = checkout -- *
   unstage = reset HEAD
+  uncommit = reset --soft HEAD^
+  uncommit-hard = reset --hard HEAD^ # also undo's changes to unstaged files
 
   # Branching
   co = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f" # checkout or create if non-existent
@@ -20,16 +22,15 @@
   branch-cleanup = remote update --prune
   branch-rm-remote = "!f() { git branch -d $1; git push origin --delete $1; }; f"
   branch-mv-rem = "!f() { git branch -m $1 $2; git push origin --delete $1; git push --set-upstream origin $2: }; f"
-  branch-refresh = fetch origin --prune
   branch-prune-remote = fetch origin --prune
-  branch-prune = branch-prune = "!f() { git branch-refresh | git branch -r | awk '{print $1}' | egrep -vf /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -d }; f"
   which = !git branch | grep -i
   lucky = !sh -c 'git checkout $(git which $1 -m1)' -
+  get-current-branch = rev-parse --abbrev-ref HEAD
 
   # Remotes
   pl = pull
   ps = push
-  ps-remote = push -u origin
+  publish = !git push -u origin $(git get-current-branch)
   ro = remote add origin
   f = fetch origin
 
