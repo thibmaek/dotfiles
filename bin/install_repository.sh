@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
 
-cd ../;
+cd ../ || return;
 
 git pull origin master;
 
 function doIt() {
 	rsync --exclude ".git/" \
-    --exclude "gitignore" \
+    --exclude ".gitignore" \
 		--exclude ".DS_Store" \
 		--exclude ".macos" \
-		--exclude "bootstrap.sh" \
+		--exclude "bin/install_repository.sh" \
 		--exclude "README.md" \
 		-avh --no-perms . ~;
-	source ~/.bash_profile;
+	source "$HOME/.bash_profile";
 }
 
-if [ "$1" == "--force" -o "$1" == "-f" ]; then
+if [ "$1" == "--force" ] || [ "$1" == "-f" ]; then
 	doIt;
 else
 	read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
