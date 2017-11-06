@@ -6,4 +6,4 @@ alias docker-remove-all="docker rm $(docker ps -a -q)"
 
 # Commands
 function docker-bash() { docker exec -it $1 bash; }
-function docker-bash() { docker exec -it $1 sh; }
+function docker-sh() { docker exec -it $1 sh; }
