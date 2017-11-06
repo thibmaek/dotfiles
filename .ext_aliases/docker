@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# Managing containers
+alias docker-stop-all="docker stop $(docker ps -a -q)"
+alias docker-remove-all="docker rm $(docker ps -a -q)"
+
+# Commands
+function docker-bash() { docker exec -it $1 bash; }
+function docker-bash() { docker exec -it $1 sh; }
