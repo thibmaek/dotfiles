@@ -46,8 +46,5 @@ _pip_completion()
 }
 complete -o default -F _pip_completion pip
 
-# Heroku
-source "$HOME/.heroku/plugins/heroku-bash-completion/heroku-completion.bash"
-
 # Use brew command-not-found
 if brew command command-not-found-init > /dev/null; then eval "$(brew command-not-found-init)"; fi
