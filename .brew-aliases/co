@@ -1,6 +1,0 @@
-#! /usr/local/bin/bash
-# alias: brew co
-#:  * `co` [args...]
-#:    `brew co` is an alias for `brew cask outdated`
-brew cask outdated $*
-

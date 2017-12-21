@@ -1,3 +1,0 @@
-#! /usr/local/bin/bash
-# alias: brew lsdep
-brew deps --installed | grep $*

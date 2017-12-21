@@ -1,3 +1,0 @@
-#! /usr/local/bin/bash
-# alias: brew taps
-brew tap $*

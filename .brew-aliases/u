@@ -1,3 +1,0 @@
-#! /usr/local/bin/bash
-# alias: brew u
-brew uninstall $*

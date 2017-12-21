@@ -1,3 +1,0 @@
-#! /usr/local/bin/bash
-# alias: brew cc
-brew cask cleanup $*
