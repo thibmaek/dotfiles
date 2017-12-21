@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
 
 # Managing
-alias npmls="npm list -g --depth=0"
-alias npm-prune="npm cache clean $(npm config get cache) && rm node_modules"
+alias npm-list-global="npm list -g --depth=0"
+alias npm-prune="npm cache clean \$(npm config get cache) && rm node_modules"
 alias npm-prune-reinstall="npm cache clear && rm node_modules && npm install"
 
 # Run tasks
-alias nrb="npm run build"
-alias nrd="npm run development"
-alias nrp="npm run production"
+alias nrb="npm run build || npm run dist || npm run production"
+alias nrd="npm run development || npm run develop || npm run dev"
 alias nrs="npm run serve"
 
 # Check for outdated dependencies
@@ -18,10 +17,4 @@ function npmo() {
   else
     npm outdated
   fi
-}
-
-# Use local npm executables in the shell
-function npm-do {
-  (PATH=$(npm bin):$PATH;
-   eval $@;)
 }
