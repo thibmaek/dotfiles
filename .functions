@@ -70,14 +70,6 @@ function servh() {
 	python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port";
 }
 
-# Start a PHP server from a directory, optionally specifying the port
-# (Requires PHP 5.4.0+.)
-function servp() {
-	local port="${1:-4000}";
-	sleep 1 && open "http://localhost:${port}/" &
-	php -S "$localhost:${port}";
-}
-
 # Compare original and gzipped file size
 function gz() {
 	local origsize=$(wc -c < "$1");
@@ -135,23 +127,16 @@ function transfer() {
 }
 
 # Quicker update for everything
-function update() {
+function upgrade() {
+	softwareupdate --download
   for package in $(npm -g outdated --parseable --depth=0 | cut -d: -f3); do
     npm install -g "$package"
   done
   apm upgrade -c false
+	brew cask upgrade && brew cask cleanup
   brew update && brew upgrade && brew cleanup
-  pip install --upgrade pip #&& pip list --outdated | cut -d' ' -f1 | xargs pip install --upgrade
+  pip install --upgrade pip && pip list --outdated | cut -d' ' -f1 | xargs pip install --upgrade
   gem update && gem update --system && gem cleanup
-}
-
-# Given an argument installs new node version, also migrating packages
-function nvmi() {
-  NOW=$(node -v)
-  nvm install $1 --reinstall-packages-from=$NOW
-
-  nvm alias default $1
-  nvm uninstall $NOW
 }
 
 # Install latest node version
@@ -165,14 +150,6 @@ function nvmi_latest() {
   nvm uninstall $NOW
 }
 
-function sr() {
-  cd $HOME
-  spotify-ripper $1 && terminal-notifier \
-     -title 'Task completed' -message 'A terminal task completed/failed' \
-     -group 'sr' -remove 'sr' -activate co.zeit.hyper \
-     -appIcon /Applications/Hyper.app/Contents/Resources/electron.icns
-}
-
 # cat/ccat than auto copy
 function _c() {
   if which ccat > /dev/null; then
@@ -183,18 +160,13 @@ function _c() {
 }
 
 # Clean temp files etc
-function superclean() {
-  rm $HOME/Library/Caches/Adobe/After\ Effects
-  rm $HOME/.spotify-ripper/Storage
-  rm $(brew --cache) && brew cask cleanup
-}
+# function superclean() {
+#   rm $HOME/Library/Caches/Adobe/After\ Effects
+#   rm $HOME/.spotify-ripper/Storage
+#   rm "$(brew --cache)" && brew cask cleanup
+# }
 
-function add_alias() {
-  if [ -z "$1" ] && [ -z "$2" ]; then exit 1; fi;
-  echo "alias $1=\"$2\"" >> .aliases && rel
-}
-
-function p() {
+function print() {
   printf "\n\033[1m\033[34m%s\033[0m\n\n" "${1}"
 }
 
