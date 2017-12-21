@@ -11,7 +11,9 @@ if [ -z "$1" ]; then
 fi
 
 case $1 in
+  aac) INPUT_CODEC=m4a;;
   flac) INPUT_CODEC=flac;;
+  mp3) INPUT_CODEC=mp3;;
   wav) INPUT_CODEC=wav;;
 esac
 
