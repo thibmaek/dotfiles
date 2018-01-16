@@ -29,3 +29,10 @@ function gpr() {
 	git fetch origin pull/$1/head:pr/$1
 	git checkout pr/$1
 }
+
+function gsb() {
+	git fetch -p && \
+	for branch in `git branch -vv | grep ': gone]' | awk '{print $1}'`;
+		do git branch -D $branch;
+	done
+}
