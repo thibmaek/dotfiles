@@ -1,12 +1,7 @@
 [alias]
 
 # Serve using local git daemon
-serve = daemon \
-        --reuseaddr \
-        --verbose \
-        --base-path=. \
-        --export-all \
-        ./.git;
+serve = daemon --reuseaddr --verbose --base-path=. --export-all ./.git;
 
 # Serve using local git daemon + tunnel with ngrok
 ngrok = "!f() { \
@@ -24,9 +19,14 @@ ngrok = "!f() { \
        }; f"
 
 # Get a standup review
-standup = !git log \
-          --author=$USER \
-          --since='9am yesterday' \
-          --all \
-          --format=%s
+standup = !git log --author=$USER --since='9am yesterday' --all --format=%s
 
+# Sync pruned branches locally with remote
+branch-prune-local = "!f() { \
+  git branch-prune-remote | git branch -r | awk '{print $1}' | egrep -vf /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -d; \
+}; f"
+
+# Show branches last committed on
+branch-last-commited = "!f() { \
+  git for-each-ref --sort='-committerdate' --format='%(refname)' refs/heads | sed -e 's-refs/heads/--' | head; \
+}; f"
