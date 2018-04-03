@@ -30,3 +30,7 @@ branch-prune-local = "!f() { \
 branch-last-commited = "!f() { \
   git for-each-ref --sort='-committerdate' --format='%(refname)' refs/heads | sed -e 's-refs/heads/--' | head; \
 }; f"
+
+track = "!f() { \
+  git pull && git pull origin develop; \
+}; f"
