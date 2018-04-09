@@ -26,6 +26,7 @@
   which = !git branch | grep -i
   lucky = !sh -c 'git checkout $(git which $1 -m1)' -
   get-current-branch = rev-parse --abbrev-ref HEAD
+  update = push origin HEAD
 
   # Remotes
   pl = pull
