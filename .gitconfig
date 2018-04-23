@@ -6,6 +6,7 @@
   # Staging & commiting
   a = add
   aa = add .
+  amend = commit --amend --no-edit
   c = commit
   discard = checkout --
   discard-all = checkout -- *
@@ -119,10 +120,8 @@
 
 [push]
 
-  # Use the Git 1.x.x default to avoid errors on machines with old Git
-  # installations. To use `simple` instead, add this to your `~/.extra` file:
-  # `git config --global push.default simple`. See http://git.io/mMah-w.
-  default = matching
+  # Push only the current branch instead of all
+  default = current
 
 # URL shorthands
 
@@ -164,24 +163,10 @@
   smudge = git lfs smudge %f
   required = true
 
-[user]
-
-  name = Thibault Maekelbergh
-  email = thibault.maekelbergh@icloud.com
-  signingkey = 1510A2114D4A3CB4
-
 [credential]
-
   helper = osxkeychain
 
-[commit]
-
-	gpgsign = true
-
-[gpg]
-
-	program = /usr/local/MacGPG2/bin/gpg2
-
 [include]
-
-	path = /Users/thibaultmaekelbergh/.ext_aliases/git-conf-extends/git-functions
+  # Include extra git functions outside of $HOME/.gitconfig
+  path = /Users/thibaultmaekelbergh/.ext_aliases/git-conf-extends/gpg
+  path = /Users/thibaultmaekelbergh/.ext_aliases/git-conf-extends/git-functions
