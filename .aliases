@@ -8,7 +8,7 @@ alias d="cd $HOME/Desktop"
 alias dl="cd $HOME/Downloads"
 alias temp="cd $HOME/Desktop && mkd temp"
 alias here="open ."
-alias dev="cd $HOME/Documents/Development"
+alias dev="cd $HOME/Development"
 
 # Shortcuts
 alias rm="trash"
