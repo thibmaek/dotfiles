@@ -2,40 +2,12 @@
 
 # Create a new directory and enter it
 function mkd() {
-	mkdir -p "$@" && cd "$@";
+	mkdir -p "$@" && cd "$@" || return;
 }
 
 # Change working directory to the top-most Finder window location
 function cdf() {
-	cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')";
-}
-
-# Create a .tar.gz archive, using `zopfli`, `pigz` or `gzip` for compression
-function targz() {
-	local tmpFile="${@%/}.tar";
-	tar -cvf "${tmpFile}" --exclude=".DS_Store" "${@}" || return 1;
-
-	size=$(
-		stat -f"%z" "${tmpFile}" 2> /dev/null; # OS X `stat`
-		stat -c"%s" "${tmpFile}" 2> /dev/null # GNU `stat`
-	);
-
-	local cmd="";
-	if (( size < 52428800 )) && hash zopfli 2> /dev/null; then
-		# the .tar file is smaller than 50 MB and Zopfli is available; use it
-		cmd="zopfli";
-	else
-		if hash pigz 2> /dev/null; then
-			cmd="pigz";
-		else
-			cmd="gzip";
-		fi;
-	fi;
-
-	echo "Compressing .tar using \`${cmd}\`…";
-	"${cmd}" -v "${tmpFile}" || return 1;
-	[ -f "${tmpFile}" ] && rm "${tmpFile}";
-	echo "${tmpFile}.gz created successfully.";
+	cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')" || return;
 }
 
 # Determine size of a file or total size of a directory
@@ -52,7 +24,7 @@ function fs() {
 	fi;
 }
 
-# Create a data URL from a file
+# Create a Base64 data URL from a file
 function dataurl() {
 	local mimeType=$(file -b --mime-type "$1");
 	if [[ $mimeType == text/* ]]; then
@@ -62,7 +34,7 @@ function dataurl() {
 }
 
 # Start an HTTP server from a directory, optionally specifying the port
-function servh() {
+function serve_http() {
 	local port="${1:-8000}";
 	sleep 1 && open "http://localhost:${port}/" &
 	# Set the default Content-Type to `text/plain` instead of `application/octet-stream`
@@ -89,18 +61,7 @@ function json() {
 	fi;
 }
 
-# `a` with no arguments opens the current directory in Atom Editor, otherwise
-# opens the given location
-function a() {
-	if [ $# -eq 0 ]; then
-		atom .;
-	else
-		atom "$@";
-	fi;
-}
-
-# `c` with no arguments opens the current directory in VSCode, otherwise
-# opens the given location
+# Opens given/current directory in vscode
 function c() {
   if [ $# -eq 0 ]; then
     code .;
@@ -121,9 +82,9 @@ function tre() {
 function transfer() {
   tmpfile=$( mktemp -t transferXXX )
   basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9]/-/g')
-  curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile;
-  cat $tmpfile;
-  rm -f $tmpfile;
+  curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> "$tmpfile";
+  cat "$tmpfile";
+  rm -f "$tmpfile";
 }
 
 # Quicker update for everything
@@ -132,8 +93,7 @@ function upgrade() {
   for package in $(npm -g outdated --parseable --depth=0 | cut -d: -f3); do
     npm install -g "$package"
   done
-  apm upgrade -c false
-	brew cask upgrade && brew cask cleanup
+  brew cask upgrade && brew cask cleanup
   brew update && brew upgrade && brew cleanup
   pip install --upgrade pip && pip list --outdated | cut -d' ' -f1 | xargs pip install --upgrade
   gem update && gem update --system && gem cleanup
@@ -144,32 +104,32 @@ function nvmi_latest() {
   NOW=$(node -v)
   LATEST=$(nvm ls-remote | tail -1 | grep -E -o '.{0,0}v.{0,6}' | tr -d '\n')
 
-  nvm install $LATEST --reinstall-packages-from=$NOW
+  nvm install "$LATEST" --reinstall-packages-from="$NOW"
 
-  nvm alias default $LATEST
-  nvm uninstall $NOW
+  nvm alias default "$LATEST"
+  nvm uninstall "$NOW"
 }
 
 # cat/ccat than auto copy
 function _c() {
   if which ccat > /dev/null; then
-    ccat $1 | pbcopy
+    ccat "$1" | pbcopy
   else
-    cat $1 | pbcopy
+    cat "$1" | pbcopy
   fi;
 }
 
-# Clean temp files etc
-# function superclean() {
-#   rm $HOME/Library/Caches/Adobe/After\ Effects
-#   rm $HOME/.spotify-ripper/Storage
-#   rm "$(brew --cache)" && brew cask cleanup
-# }
-
+# Pretty print a message, like echo but cuter
 function print() {
   printf "\n\033[1m\033[34m%s\033[0m\n\n" "${1}"
 }
 
+# Generate a random number inbetween 2 ranges
 function rnd_num() {
-  jot -r 1 $1 $2 | cp_sanitized
+  jot -r 1 "$1" "$2" | cp_sanitized
+}
+
+# Find which service is listening on a given port
+function listening() {
+  lsof -n -iTCP:"$1" | grep LISTEN
 }
