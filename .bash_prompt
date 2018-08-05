@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function _update_ps1() {
-  PS1="$(powerline-shell $?)\n \[${yellow}\]→ "
+  PS1="$(powerline-shell $?) \[${yellow}\]→ "
 }
 
 if [ "$TERM" != "linux" ]; then
