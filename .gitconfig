@@ -78,6 +78,9 @@
   # More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
   trustctime = false
 
+  # Use diff-so-fancy as the default diff viewer
+  pager = diff-so-fancy | less --tabs=4 -RFX
+
 [color]
 
   # Use colors in Git commands that are capable of colored output when
