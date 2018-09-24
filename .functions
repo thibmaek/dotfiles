@@ -137,3 +137,7 @@ function listening() {
 function find_by_mac_addr() {
 	nmap -sP 192.168.1.0/24 >/dev/null && arp -an | grep $1 | awk '{print $2}' | sed 's/[()]//g'
 }
+
+function flatten_dir() {
+  find "$1" -mindepth 2 -type f -exec mv -i '{}' "$1" ';'
+}
