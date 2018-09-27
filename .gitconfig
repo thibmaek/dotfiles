@@ -173,3 +173,8 @@
   # Include extra git functions outside of $HOME/.gitconfig
   path = /Users/thibaultmaekelbergh/.ext_aliases/git-conf-extends/gpg
   path = /Users/thibaultmaekelbergh/.ext_aliases/git-conf-extends/git-functions
+
+[user]
+  name = Thibault Maekelbergh
+  email = thibault.maekelbergh@icloud.com
+  signingkey = 0085F9B9762D25E9
