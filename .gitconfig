@@ -178,3 +178,4 @@
   name = Thibault Maekelbergh
   email = thibault.maekelbergh@icloud.com
   signingkey = 0085F9B9762D25E9
+  gpgsign = true
