@@ -9,7 +9,7 @@ Comes with an installer script but can of course be copied file by file as well.
 
 ## Installing
 
-```shell
+```console
 $ chmod +x bin/install_repository.sh
 $ cd bin && ./install_repository.sh
 
