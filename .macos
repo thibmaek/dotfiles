@@ -182,6 +182,9 @@ defaults write com.apple.dock mru-spaces -bool false
 # Make Dock icons of hidden applications translucent
 defaults write com.apple.dock showhidden -bool true
 
+# Don’t show recent applications in Dock
+defaults write com.apple.dock show-recents -bool false
+
 # Add iOS & Watch Simulator to Launchpad
 sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app" "/Applications/Simulator.app"
 sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/Simulator (Watch).app" "/Applications/Simulator (Watch).app"
