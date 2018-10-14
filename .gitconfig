@@ -36,6 +36,7 @@
   publish = !git push -u origin $(git get-current-branch)
   ro = remote add origin
   f = fetch origin
+  open = "!f() { open $(git remote get-url origin); }; f"
 
   # Controlling
   d = diff
