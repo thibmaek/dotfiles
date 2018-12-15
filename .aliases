@@ -19,6 +19,7 @@ alias kd="killall Dock"
 alias rmrf="/bin/rm -rf"
 alias purge="sudo purge"
 alias chmodx="chmod +x"
+alias mime="file --mime-type"
 
 # Applications
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
