@@ -6,8 +6,8 @@ if command -v rbenv > /dev/null; then
   eval "$(rbenv init -)"
 fi
 
-# Pyenv
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+# Brew Python
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
 # gpg2 & its gpg-agent
 export PATH="/usr/local/opt/gpg-agent/bin:$PATH"
