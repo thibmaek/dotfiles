@@ -2,7 +2,9 @@
 
 # Rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+if command -v rbenv > /dev/null; then
+  eval "$(rbenv init -)"
+fi
 
 # Pyenv
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
@@ -29,16 +31,19 @@ fi
 . ~/.git-completion.bash
 
 # Rbenv & bundler
-if which bundler > /dev/null; then eval "$(complete_bundle_bash_command init)"; fi
+if command -v bundler > /dev/null; then
+  eval "$(complete_bundle_bash_command init)"
+fi
 
 # Pip
-_pip_completion()
-{
-    COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \
+_pip_completion() {
+  mapfile -t COMPREPLY < <(COMP_WORDS="${COMP_WORDS[*]}" \
                    COMP_CWORD=$COMP_CWORD \
-                   PIP_AUTO_COMPLETE=1 $1 ) )
+                   PIP_AUTO_COMPLETE=1 $1)
 }
 complete -o default -F _pip_completion pip
 
 # Use brew command-not-found
-if brew command command-not-found-init > /dev/null; then eval "$(brew command-not-found-init)"; fi
+if brew command command-not-found-init > /dev/null; then
+  eval "$(brew command-not-found-init)"
+fi
