@@ -112,3 +112,6 @@ alias date_dd_mm_yy="date +%x"
 
 # Copy stdin and sanitize trailing newlines
 alias cp_sanitized="tr -d '\n' | pbcopy"
+
+# List available SERIAL/COM ports
+alias list_serial_ports="ls /dev/{tty,cu}.*"
