@@ -141,3 +141,7 @@ function find_by_mac_addr() {
 function flatten_dir() {
   find "$1" -mindepth 2 -type f -exec mv -i '{}' "$1" ';'
 }
+
+function icns_2_png() {
+  sips -s format png "$1" --out icon.png
+}
