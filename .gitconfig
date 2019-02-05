@@ -14,7 +14,7 @@
   uncommit = reset --soft HEAD^
   uncommit-hard = reset --hard HEAD^ # also undo's changes to unstaged files
   revert-file = "!f() { git checkout $1 -- $2; }; f"
-  reckt = "!f() { git aa && git commit -m \"Commit\" && git update; }; f"
+  rekt = "!f() { git aa && git commit -m \"Commit\" && git update; }; f"
 
   # Branching
   co = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f" # checkout or create if non-existent
