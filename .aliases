@@ -41,7 +41,8 @@ fi
 
 # `ls` aliases
 alias lsa="ls -AF"
-alias lsd="ls -lF ${colorflag} | grep '^d'"
+alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
+alias lsf="ls -lF ${colorflag} | grep -v '^d'"
 alias l="ls -lF ${colorflag}"
 alias la="ls -lAF ${colorflag}"
 
