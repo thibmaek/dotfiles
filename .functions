@@ -2,63 +2,64 @@
 
 # Create a new directory and enter it
 function mkd() {
-	mkdir -p "$@" && cd "$@" || return;
+  mkdir -p "$@" && cd "$@" || return;
 }
 
 # Change working directory to the top-most Finder window location
 function cdf() {
-	cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')" || return;
+  cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')" || return;
 }
 
 # Determine size of a file or total size of a directory
 function fs() {
-	if du -b /dev/null > /dev/null 2>&1; then
-		local arg=-sbh;
-	else
-		local arg=-sh;
-	fi
-	if [[ -n "$@" ]]; then
-		du $arg -- "$@" | gsort -h;
-	else
-		du $arg .[^.]* * | gsort -h;
-	fi;
+  if du -b /dev/null > /dev/null 2>&1; then
+    local arg=-sbh;
+  else
+    local arg=-sh;
+  fi
+  if [[ -n "$@" ]]; then
+    du $arg -- "$@" | gsort -h;
+  else
+    du $arg .[^.]* * | gsort -h;
+  fi;
 }
 
 # Create a Base64 data URL from a file
 function dataurl() {
-	local mimeType=$(file -b --mime-type "$1");
-	if [[ $mimeType == text/* ]]; then
-		mimeType="${mimeType};charset=utf-8";
-	fi
-	echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')";
+  local mimeType
+  mimeType=$(file -b --mime-type "$1");
+  if [[ $mimeType == text/* ]]; then
+    mimeType="${mimeType};charset=utf-8";
+  fi
+  echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')";
 }
 
 # Start an HTTP server from a directory, optionally specifying the port
 function serve_http() {
-	local port="${1:-8000}";
-	sleep 1 && open "http://localhost:${port}/" &
-	# Set the default Content-Type to `text/plain` instead of `application/octet-stream`
-	# And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
-	python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port";
+  local port="${1:-8000}";
+  sleep 1 && open "http://localhost:${port}/" &
+  # Set the default Content-Type to `text/plain` instead of `application/octet-stream`
+  # And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
+  python -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port";
 }
 
 # Compare original and gzipped file size
 function gz() {
-	local origsize=$(wc -c < "$1");
-	local gzipsize=$(gzip -c "$1" | wc -c);
-	local ratio=$(echo "$gzipsize * 100 / $origsize" | bc -l);
-	printf "orig: %d bytes\n" "$origsize";
-	printf "gzip: %d bytes (%2.2f%%)\n" "$gzipsize" "$ratio";
+  local origsize=$(wc -c < "$1");
+  local gzipsize=$(gzip -c "$1" | wc -c);
+  local ratio=$(echo "$gzipsize * 100 / $origsize" | bc -l);
+  printf "orig: %d bytes\n" "$origsize";
+  printf "gzip: %d bytes (%2.2f%%)\n" "$gzipsize" "$ratio";
 }
 
 # Syntax-highlight JSON strings or files
 # Usage: `json '{"foo":42}'` or `echo '{"foo":42}' | json`
 function json() {
-	if [ -t 0 ]; then # argument
-		python -mjson.tool <<< "$*" | pygmentize -l javascript;
-	else # pipe
-		python -mjson.tool | pygmentize -l javascript;
-	fi;
+  if [ -t 0 ]; then # argument
+    python -mjson.tool <<< "$*" | pygmentize -l javascript;
+  else # pipe
+    python -mjson.tool | pygmentize -l javascript;
+  fi;
 }
 
 # Opens given/current directory in vscode
@@ -75,7 +76,7 @@ function c() {
 # `less` with options to preserve color and line numbers, unless the output is
 # small enough for one screen.
 function tre() {
-	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
+  tree -aC -I '.git|node_modules' --dirsfirst "$@" | less -FRNX;
 }
 
 # Transfer.sh (https://transfer.sh)
@@ -89,34 +90,14 @@ function transfer() {
 
 # Quicker update for everything
 function upgrade() {
-	softwareupdate --download
+  softwareupdate --download
   for package in $(npm -g outdated --parseable --depth=0 | cut -d: -f3); do
     npm install -g "$package"
   done
-  brew cask upgrade && brew cask cleanup
   brew update && brew upgrade && brew cleanup
+  brew cask upgrade && brew cask cleanup
   pip install --upgrade pip && pip list --outdated | cut -d' ' -f1 | xargs pip install --upgrade
   gem update && gem update --system && gem cleanup
-}
-
-# Install latest node version
-function nvmi_latest() {
-  NOW=$(node -v)
-  LATEST=$(nvm ls-remote | tail -1 | grep -E -o '.{0,0}v.{0,6}' | tr -d '\n')
-
-  nvm install "$LATEST" --reinstall-packages-from="$NOW"
-
-  nvm alias default "$LATEST"
-  nvm uninstall "$NOW"
-}
-
-# cat/ccat than auto copy
-function _c() {
-  if which ccat > /dev/null; then
-    ccat "$1" | pbcopy
-  else
-    cat "$1" | pbcopy
-  fi;
 }
 
 # Pretty print a message, like echo but cuter
@@ -135,7 +116,7 @@ function listening() {
 }
 
 function find_by_mac_addr() {
-	nmap -sP 192.168.1.0/24 >/dev/null && arp -an | grep $1 | awk '{print $2}' | sed 's/[()]//g'
+  nmap -sP 192.168.1.0/24 >/dev/null && arp -an | grep $1 | awk '{print $2}' | sed 's/[()]//g'
 }
 
 function flatten_dir() {
@@ -144,4 +125,14 @@ function flatten_dir() {
 
 function icns_2_png() {
   sips -s format png "$1" --out icon.png
+}
+
+function zero_out_disk() {
+  if [ -z "$1" ]; then
+    print "No valid disk found. Usage:"
+    print " zero_out_disk disk3"
+    exit 1
+  fi
+  diskutil unmountDisk force "$1"
+  sudo dd if=/dev/zero of="/dev/$1" bs=1024 count=1024
 }
