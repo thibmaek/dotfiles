@@ -51,7 +51,6 @@ module.exports = {
     "hyper-tabs-enhanced",
     "hyper-chesterish",
     "hyper-statusline",
-    "hyperterm-alternatescroll",
     "hyper-confirm",
     "hyper-quit",
     "hyperlinks",
