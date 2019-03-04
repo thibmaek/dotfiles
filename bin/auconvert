@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+set -e
+
+function show_help() {
+  echo "Usage: auconvert <input_codec|help> <output_codec>"
+  echo "  e.g.: auconvert flac aac"
+  echo "  e.g.: auconvert help"
+}
+
+function transcode() {
+  local inputCodec
+  local outputCodec
+  local bitRate
+  local extension
+
+  if [ -z "$1" ]; then
+    show_help
+    exit 1
+  fi
+
+  # Set the input codec or show help
+  case $1 in
+    aac) inputCodec=m4a;;
+    flac) inputCodec=flac;;
+    mp3) inputCodec=mp3;;
+    wav) inputCodec=wav;;
+    help) show_help && exit 0;;
+  esac
+
+  # Set the output codec
+  case $2 in
+    mp3) outputCodec=libmp3lame; bitRate=320k; extension=mp3;;
+    aac) outputCodec=libfdk_aac; bitRate=256k; extension=m4a;;
+  esac
+
+  if [[ ! -f "*.$inputCodec" ]]; then
+    echo "No files found matching output codec: .$inputCodec"
+    echo "Found the following audio files in current directory:"
+    echo ""
+    file ./* | grep -i "audio"
+    exit 1
+  fi
+
+  for file in *."$inputCodec"; do
+    ffmpeg -i "$file" -c:a $outputCodec -b:a "$bitRate" "$(basename "$file" ."$inputCodec").$extension" || break;
+  done
+
+  unset inputCodec && unset outputCodec && unset bitRate
+}
+
+transcode "$@"
