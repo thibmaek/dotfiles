@@ -33,7 +33,7 @@ function transcode() {
     aac) outputCodec=libfdk_aac; bitRate=256k; extension=m4a;;
   esac
 
-  if [[ ! -f "*.$inputCodec" ]]; then
+  if ! find . -name "*.$inputCodec" | grep -q "."; then
     echo "No files found matching output codec: .$inputCodec"
     echo "Found the following audio files in current directory:"
     echo ""
