@@ -42,6 +42,9 @@ echo 'Cleanup XCode Derived Data and Archives...'
 rm -rfv ~/Library/Developer/Xcode/DerivedData/* &>/dev/null
 rm -rfv ~/Library/Developer/Xcode/Archives/* &>/dev/null
 
+echo 'Cleanup .DS_Store files...'
+find "$HOME" -type f -name '*.DS_Store' -ls -delete
+
 if type "brew" &>/dev/null; then
     echo 'Update Homebrew Recipes...'
     brew update
