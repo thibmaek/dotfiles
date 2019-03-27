@@ -6,8 +6,16 @@ function install_cleanup() {
   chmod +x cleanup_mac
 }
 
-function install_dependencies() {
-  install_cleanup
+function install_ngrok() {
+  echo "Installing https://github.com/inconshreveable/ngrok"
+  curl -o ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-darwin-amd64.zip
+  unzip ngrok.zip && rm ngrok.zip
+  chmod +x ngrok
 }
 
-install_dependencies
+function install_dependencies() {
+  install_cleanup
+  install_ngrok
+}
+
+"${@:-install_dependencies}"
