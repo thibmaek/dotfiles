@@ -6,7 +6,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias d="cd $HOME/Desktop"
 alias dl="cd $HOME/Downloads"
-alias temp="cd $HOME/Desktop && mkd temp"
+alias temp="cd $HOME/Downloads && mkd temp"
 alias here="open ."
 alias dev="cd $HOME/Development"
 
