@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+function pretty_echo() {
+  printf "\n\033[1m\033[34m%s\033[0m\n\n" "${1}"
+}
+
+function do_upgrade() {
+  pretty_echo "🍺 Upgrading brew packages & apps..."
+  brew update && brew upgrade && brew cask upgrade && brew cleanup
+
+  pretty_echo "🍎 Installing system updates & App Store updates..."
+  softwareupdate --install --all
+
+  pretty_echo "💎 Updating gems..."
+  gem update && gem update --system && gem cleanup
+
+  pretty_echo "📦 Updating NPM modules..."
+  npm i -g npm@latest
+  for npm_module in $(npm -g outdated --parseable --depth=0 | cut -d: -f2); do
+    npm i -g "$npm_module"
+  done
+
+  pretty_echo "🐍 Upgrading Pip packages..."
+  pip install --upgrade pip && pip list --outdated | cut -d' ' -f1 | xargs pip install --upgrade
+}
+
+do_upgrade
