@@ -38,6 +38,7 @@
   dep = "!f() { git checkout -b dependencies/\"$1\" 2> /dev/null || git checkout dependencies/\"$1\"; }; f"
 
   # Remotes
+  ghc = "!f() { git clone https://github.com/\"$1\"; }; f"
   pl = pull
   ps = push
   publish = !git push -u origin $(git get-current-branch)
